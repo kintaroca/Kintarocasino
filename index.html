@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casino</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-weight:500}
+.c{max-width:480px;margin:auto}
+.tb{display:flex;gap:8px;margin-bottom:28px;align-items:center}
+.bp{display:flex;align-items:center;gap:6px;background:#141620;border:1px solid #1f2230;padding:12px 16px;border-radius:14px;font-weight:600;font-size:.9em;flex:1;justify-content:center;color:#fff}
+.bp span{color:#7c5cff;font-weight:700}
+.ib{width:44px;height:44px;background:#141620;border:1px solid #1f2230;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.05em;cursor:pointer;transition:.2s;color:#8b90a5;position:relative}
+.ib:hover{background:#1a1d2a;color:#fff}
+.ib.acc{background:#7c5cff;border-color:#7c5cff;color:#fff}
+.ib .dot{position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#ef4444;border-radius:50%;border:2px solid #0a0b0f}
+.st{font-size:.75em;font-weight:700;color:#6b7089;margin:0 2px 14px;letter-spacing:1.2px;text-transform:uppercase}
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gc{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1/1.05;background:#141620;border:1px solid #1f2230;transition:.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.gc:hover{background:#1a1d2a;border-color:#2a2f42;transform:translateY(-3px)}
+.ce{font-size:3.8em;margin-bottom:14px}
+.ct{font-size:.95em;font-weight:700;color:#fff;text-transform:uppercase}
+.cs{font-size:.7em;color:#6b7089;margin-top:4px}
+.cb{position:absolute;top:12px;right:12px;background:#7c5cff;color:#fff;font-size:.6em;font-weight:700;padding:4px 9px;border-radius:6px}
+.cb.new{background:#1f2230;color:#8b90a5}
+.bonus{background:#141620;border:1px solid #1f2230;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-top:14px;transition:.2s}
+.bonus .ico{font-size:1.6em;width:44px;height:44px;background:#1f2230;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.bonus h3{font-size:.92em;font-weight:700;color:#fff;margin-bottom:2px}
+.bonus p{font-size:.75em;color:#6b7089}
+.bonus .ar{margin-left:auto;color:#6b7089}
+.bonus.dis{opacity:.5;cursor:not-allowed}
+.refer{background:#141620;border:1px solid #1f2230;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-top:14px;transition:.2s}
+.refer:hover{background:#1a1d2a;border-color:#2a2f42}
+.refer .ico{font-size:1.6em;width:44px;height:44px;background:#1f2230;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.refer h3{font-size:.92em;font-weight:700;color:#fff;margin-bottom:2px}
+.refer p{font-size:.75em;color:#6b7089}
+.refer .ar{margin-left:auto;color:#6b7089}
+/* botón "Mis retiros" */
+.mywith{background:#141620;border:1px solid #1f2230;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-top:14px;transition:.2s}
+.mywith:hover{background:#1a1d2a;border-color:#2a2f42}
+.mywith .ico{font-size:1.6em;width:44px;height:44px;background:#1f2230;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.mywith h3{font-size:.92em;font-weight:700;color:#fff;margin-bottom:2px}
+.mywith p{font-size:.75em;color:#6b7089}
+.mywith .ar{margin-left:auto;color:#6b7089}
+.prog{background:#141620;border:1px solid #1f2230;border-radius:16px;padding:16px 18px;margin-top:14px}
+.prog .top{display:flex;justify-content:space-between;margin-bottom:10px}
+.prog .top .t{font-size:.82em;font-weight:600;color:#fff}
+.prog .top .v{font-size:.78em;font-weight:700;color:#7c5cff}
+.prog .bar{height:6px;background:#1f2230;border-radius:6px;overflow:hidden}
+.prog .bar .fill{height:100%;background:#7c5cff;border-radius:6px;transition:width .5s}
+.prog .sub{font-size:.7em;color:#6b7089;margin-top:10px}
+.prog .sub b{color:#8b90a5}
+.bb{background:#141620;border:1px solid #1f2230;color:#e8eaf0;padding:10px 18px;border-radius:12px;font-weight:600;cursor:pointer;margin-bottom:20px;font-size:.85em;font-family:inherit}
+.inf{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;background:#141620;border:1px solid #1f2230;border-radius:16px;padding:14px 10px;margin-bottom:18px;text-align:center}
+.inf div{font-size:.68em;color:#6b7089;font-weight:600}
+.inf b{display:block;font-size:1em;margin-top:4px;color:#fff;font-weight:700}
+.gm{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:16px;margin-bottom:14px}
+.gr{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cl{aspect-ratio:1;background:#1a1d2a;border:1px solid #232637;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4em;cursor:pointer;position:relative;transition:.15s}
+.cl:hover{background:#22263a;border-color:#7c5cff;transform:scale(1.04)}
+.cl.rv{background:#0f1118;cursor:default}
+.cl.rv:hover{transform:none;border-color:#1a1d2a}
+.cl.gm2{background:#7c5cff;border-color:#7c5cff;color:#fff}
+.cl.pt{background:#2a2f42}
+.cl .vl{position:absolute;right:4px;top:4px;font-size:.55em;color:#fff;font-weight:700}
+.ba{background:#0f1118;border-radius:16px;padding:30px 15px;display:flex;justify-content:center;gap:14px;margin-bottom:14px;min-height:200px;align-items:center}
+.bx{width:78px;height:96px;background:#1a1d2a;border:1px solid #232637;border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2.4em;transition:.2s}
+.bx:hover{background:#22263a;transform:translateY(-4px)}
+.bx.op{background:#7c5cff;cursor:default}
+.bx.bd{background:#2a2f42}
+.bbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.big{padding:16px;border:none;border-radius:14px;font-size:1em;font-weight:700;cursor:pointer;color:#fff;transition:.2s;font-family:inherit}
+.bb2{background:#7c5cff}
+.rb{background:#1f2230;color:#e8eaf0;border:1px solid #2a2f42}
+.cr{display:flex;align-items:center;background:#141620;border:1px solid #1f2230;border-radius:14px;padding:10px 14px;margin-bottom:10px;gap:8px}
+.cr .lb{color:#6b7089;font-weight:600;font-size:.82em}
+.cr .vl{color:#fff;font-weight:700;font-size:1.1em;flex:1;text-align:center}
+.cr .un{color:#6b7089;font-size:.75em}
+.pm{width:34px;height:34px;border-radius:10px;border:none;background:#1f2230;color:#e8eaf0;font-size:1.1em;font-weight:600;cursor:pointer;font-family:inherit}
+.r2{display:grid;grid-template-columns:1.1fr 1fr;gap:8px;margin-bottom:12px}
+.pn{background:#141620;border:1px solid #1f2230;border-radius:14px;padding:12px}
+.pn .tt{font-size:.68em;color:#6b7089;font-weight:600;margin-bottom:10px;text-align:center;text-transform:uppercase}
+.sl{display:flex;align-items:center;background:#0f1118;border-radius:10px;padding:5px}
+.sl button{width:28px;height:28px;border-radius:8px;border:none;background:transparent;color:#6b7089;font-size:1.1em;cursor:pointer;font-family:inherit}
+.sl .nm{font-size:1.1em;font-weight:700;flex:1;text-align:center}
+.sl .nm b{color:#7c5cff}
+.sl .nm span{color:#2a2f42}
+.sz{display:flex;gap:6px}
+.sz div{flex:1;aspect-ratio:1;border-radius:10px;cursor:pointer;border:1px solid #232637;background:#1a1d2a;display:flex;align-items:center;justify-content:center;font-size:.72em;font-weight:700;color:#8b90a5}
+.sz .a{background:#7c5cff;border-color:#7c5cff;color:#fff}
+.mg{text-align:center;padding:12px;margin-top:12px;border-radius:12px;background:#0f1118;color:#6b7089;min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.82em}
+.mg.w{background:#14231a;color:#4ade80;border:1px solid #1e3a28}
+.mg.l{background:#2a1315;color:#f87171;border:1px solid #3a1e22}
+.hs{background:#141620;border:1px solid #1f2230;border-radius:14px;padding:12px}
+.hr{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:4px;padding:8px;font-size:.68em;color:#6b7089;border-bottom:1px solid #1a1d2a;text-align:center;font-weight:600}
+.hr:last-child{border:none}
+.hr b{color:#e8eaf0;font-weight:600}
+.am{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;overflow-y:auto}
+.am.a{display:flex}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:#1a1d2a;border:1px solid #2a2f42;color:#e8eaf0;padding:14px 20px;border-radius:14px;font-size:.85em;font-weight:600;box-shadow:0 10px 40px rgba(0,0,0,.5);z-index:2000;transition:.4s;opacity:0;max-width:calc(100% - 32px);display:flex;align-items:center;gap:10px;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.ok{border-color:#1e3a28;background:#14231a;color:#86efac}
+.toast.warn{border-color:#3a2e0e;background:#2a200a;color:#fbbf24}
+.toast.err{border-color:#3a1e22;background:#2a1315;color:#f87171}
+.login-screen{position:fixed;inset:0;background:#0a0b0f;display:flex;align-items:center;justify-content:center;padding:20px;z-index:1500;overflow-y:auto}
+.login-box{background:#141620;border:1px solid #1f2230;border-radius:22px;padding:32px 26px;max-width:400px;width:100%;margin:auto}
+.login-box h1{font-size:1.5em;font-weight:800;text-align:center;margin-bottom:6px;color:#fff}
+.login-box .sub{text-align:center;color:#6b7089;font-size:.85em;margin-bottom:26px}
+.login-box .tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#0f1118;border-radius:12px;padding:4px;margin-bottom:20px}
+.login-box .tabs button{background:transparent;border:none;color:#6b7089;padding:10px;border-radius:9px;font-weight:700;cursor:pointer;font-size:.85em;transition:.2s;font-family:inherit}
+.login-box .tabs button.a{background:#7c5cff;color:#fff}
+.login-box label{display:block;color:#6b7089;font-size:.7em;font-weight:700;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px}
+.login-box input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #232637;background:#0f1118;color:#fff;font-size:.95em;outline:none;font-family:inherit;transition:.2s}
+.login-box input:focus{border-color:#7c5cff}
+.login-box .btn-main{width:100%;background:#7c5cff;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.95em;margin-top:20px;transition:.2s;font-family:inherit}
+.login-box .btn-main:hover{background:#6b4de6}
+.login-box .btn-main:disabled{opacity:.5;cursor:not-allowed}
+.login-box .err{text-align:center;color:#f87171;font-size:.82em;min-height:20px;margin-top:14px;font-weight:600}
+.pf{background:#141620;border:1px solid #1f2230;border-radius:22px;padding:30px 24px 24px;max-width:360px;width:100%;text-align:center;margin:auto;position:relative;overflow:hidden}
+.pf::before{content:'';position:absolute;top:0;left:0;right:0;height:90px;background:linear-gradient(135deg,#7c5cff,#6b4de6);opacity:.15}
+.pf .close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:#6b7089;font-size:1.2em;cursor:pointer;z-index:3;width:32px;height:32px;border-radius:8px;font-family:inherit}
+.pf .avatar{width:80px;height:80px;border-radius:50%;background:#1f2230;border:3px solid #141620;box-shadow:0 0 0 2px #7c5cff;display:flex;align-items:center;justify-content:center;font-size:2.2em;margin:0 auto 14px;position:relative;z-index:2}
+.pf h2{font-size:.95em;font-weight:700;color:#fff;margin-bottom:4px;position:relative;z-index:2;word-break:break-all;padding:0 10px}
+.pf .role{display:inline-block;background:#1f2230;color:#8b90a5;font-size:.65em;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:22px;position:relative;z-index:2}
+.pf .stats{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:left;position:relative;z-index:2}
+.pf .stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1a1d2a}
+.pf .stat-row:last-child{border-bottom:none}
+.pf .stat-row .lbl{font-size:.78em;color:#6b7089}
+.pf .stat-row .val{font-size:.85em;color:#fff;font-weight:700}
+.pf .stat-row .val.acc{color:#7c5cff}
+.pf .stat-row .val.green{color:#4ade80}
+.pf .prog-mini{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:14px 16px;margin-bottom:14px;position:relative;z-index:2}
+.pf .prog-mini .top{display:flex;justify-content:space-between;margin-bottom:8px}
+.pf .prog-mini .top .t{font-size:.72em;color:#6b7089;font-weight:600;text-transform:uppercase}
+.pf .prog-mini .top .v{font-size:.75em;color:#7c5cff;font-weight:700}
+.pf .prog-mini .bar{height:5px;background:#1f2230;border-radius:5px;overflow:hidden}
+.pf .prog-mini .bar .f{height:100%;background:#7c5cff;border-radius:5px}
+.pf .btn-close{width:100%;background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;position:relative;z-index:2;font-family:inherit;margin-bottom:8px}
+.pf .btn-logout{width:100%;background:#1f2230;color:#f87171;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;position:relative;z-index:2;font-family:inherit}
+.pp{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:26px 22px;max-width:400px;width:100%;margin:auto}
+.pp .logo{font-size:1.5em;font-weight:800;margin-bottom:6px}
+.pp .logo .p1{color:#009cde}
+.pp .logo .p2{color:#012169}
+.pp h3{font-size:1em;font-weight:700;margin-bottom:4px;color:#fff}
+.pp .sub{color:#6b7089;font-size:.8em;margin-bottom:20px}
+.pp .lbl{display:block;color:#6b7089;font-size:.68em;font-weight:700;margin:14px 0 6px;text-transform:uppercase}
+.pp input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #232637;background:#0f1118;color:#fff;font-size:.95em;outline:none;font-family:inherit}
+.pp input:focus{border-color:#7c5cff}
+.pp .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pp .card{background:#0f1118;border:1px solid #232637;border-radius:12px;padding:12px 6px;cursor:pointer;transition:.2s;text-align:center;position:relative}
+.pp .card:hover{background:#1a1d2a;border-color:#7c5cff}
+.pp .card.sel{background:#7c5cff;border-color:#7c5cff}
+.pp .card.dis{opacity:.35;cursor:not-allowed}
+.pp .card.dis:hover{background:#0f1118;border-color:#232637}
+.pp .card.locked::after{content:'';position:absolute;inset:0;background:rgba(15,17,24,.55);pointer-events:none}
+.pp .card .lockIcon{position:absolute;top:6px;left:6px;font-size:.85em;z-index:3}
+.pp .card .usd{font-size:1.2em;font-weight:800;color:#fff;position:relative;z-index:2}
+.pp .card .pts{font-size:.65em;color:#6b7089;font-weight:600;margin-top:3px;position:relative;z-index:2}
+.pp .card.sel .pts{color:rgba(255,255,255,.7)}
+.pp .card .max{position:absolute;top:-6px;right:-4px;background:#fbbf24;color:#0a0b0f;font-size:.55em;font-weight:800;padding:2px 6px;border-radius:6px;z-index:4}
+.pp .lock-info{background:#2a200a;border:1px solid #3a2e0e;color:#fbbf24;font-size:.72em;font-weight:600;padding:10px 12px;border-radius:10px;margin-top:10px;text-align:center}
+.pp .lock-info b{color:#fff}
+.pp .disponible{display:flex;justify-content:space-between;background:#0f1118;border:1px solid #232637;padding:12px 14px;border-radius:12px;margin-top:14px;font-size:.82em}
+.pp .disponible .l{color:#6b7089;font-weight:600}
+.pp .disponible .v{color:#7c5cff;font-weight:700}.pp .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.pp .b1{background:#1f2230;border:none;color:#e8eaf0;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
+.pp .b2{background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
+.pp .b2:disabled{opacity:.35;cursor:not-allowed}
+.pp .msg{text-align:center;margin-top:12px;font-size:.82em;font-weight:600;min-height:18px}
+.pp .msg.ok{color:#4ade80}
+.pp .msg.err{color:#f87171}
+.bd{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:32px 24px;max-width:400px;width:100%;text-align:center;margin:auto;position:relative}
+.bd .close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:#6b7089;font-size:1.3em;cursor:pointer;font-family:inherit}
+.bd .big-ico{font-size:3.5em;margin-bottom:14px}
+.bd h2{font-size:1.3em;font-weight:800;color:#fff;margin-bottom:6px}
+.bd p{color:#6b7089;font-size:.82em;margin-bottom:6px}
+.bd .amount{font-size:2.2em;font-weight:800;color:#7c5cff;margin:16px 0}
+.bd .btn-claim{background:#7c5cff;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.95em;width:100%;font-family:inherit}
+.bd .btn-claim:disabled{opacity:.5}
+/* REFERIDOS */
+.ref-box{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:22px 18px;text-align:center;margin-bottom:14px}
+.ref-box .ico{font-size:2.8em;margin-bottom:10px}
+.ref-box h2{font-size:1.1em;font-weight:800;color:#fff;margin-bottom:6px}
+.ref-box p{font-size:.8em;color:#6b7089;margin-bottom:18px;line-height:1.5}
+.ref-link-box{background:#141620;border:1px dashed #2a2f42;border-radius:12px;padding:14px;margin-bottom:12px;word-break:break-all}
+.ref-link{font-size:.82em;color:#a5b4fc;font-weight:600;line-height:1.5}
+.ref-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.ref-btn{background:#1f2230;border:1px solid #2a2f42;color:#e8eaf0;padding:11px 12px;border-radius:10px;font-weight:700;cursor:pointer;font-size:.8em;font-family:inherit;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.ref-btn:hover{background:#2a2f42;border-color:#7c5cff}
+.ref-btn.primary{background:#7c5cff;border-color:#7c5cff;color:#fff}
+.ref-btn.primary:hover{background:#6b4de6}
+.ref-info{background:#0f1118;border:1px solid #1f2230;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:.75em;color:#94a3b8;font-weight:500;line-height:1.5;text-align:center}
+.ref-info b{color:#a5b4fc;font-weight:700}
+/* HISTORIAL DE RETIROS */
+.mw-box{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:22px 20px;max-width:440px;width:100%;margin:auto;position:relative;max-height:90vh;overflow-y:auto}
+.mw-box .close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:#6b7089;font-size:1.3em;cursor:pointer;font-family:inherit;width:32px;height:32px;border-radius:8px}
+.mw-box .close-x:hover{background:#1f2230;color:#fff}
+.mw-box h2{font-size:1.2em;font-weight:800;color:#fff;margin-bottom:6px;text-align:center;padding:0 30px}
+.mw-box .sub{font-size:.8em;color:#6b7089;text-align:center;margin-bottom:20px;font-weight:500}
+.mw-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:18px}
+.mw-stat{background:#0f1118;border:1px solid #1f2230;border-radius:12px;padding:12px 10px;text-align:center}
+.mw-stat .lbl{font-size:.6em;color:#6b7089;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.mw-stat .val{font-size:1.15em;font-weight:800;color:#fff}
+.mw-stat .val.acc{color:#7c5cff}
+.mw-stat .val.warn{color:#fbbf24}
+.mw-stat .val.ok{color:#4ade80}
+.mw-item{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mw-item:last-child{margin-bottom:0}
+.mw-item .info{min-width:0;flex:1}
+.mw-item .info .monto{font-size:1.05em;font-weight:800;color:#fff;margin-bottom:3px}
+.mw-item .info .monto span{color:#6b7089;font-weight:500;font-size:.78em}
+.mw-item .info .meta{font-size:.7em;color:#6b7089;font-weight:500;line-height:1.5;word-break:break-all}
+.mw-item .estado{font-size:.65em;font-weight:700;padding:5px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.mw-item .estado.pendiente{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.mw-item .estado.pagado{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.mw-empty{text-align:center;padding:40px 20px;color:#6b7089;font-size:.85em;font-weight:500}
+.mw-empty .ico{font-size:2.5em;display:block;margin-bottom:12px;opacity:.5}
+.mw-tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:#0f1118;border-radius:12px;padding:4px;margin-bottom:16px}
+.mw-tabs button{background:transparent;border:none;color:#6b7089;padding:9px;border-radius:9px;font-weight:700;cursor:pointer;font-size:.78em;transition:.2s;font-family:inherit}
+.mw-tabs button.a{background:#7c5cff;color:#fff}
+.loading{position:fixed;inset:0;background:#0a0b0f;display:flex;align-items:center;justify-content:center;z-index:1400;color:#6b7089;font-size:.9em;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h1>🎰 Casino</h1>
+    <div class="sub">Entra para jugar y ganar puntos</div>
+    <div class="tabs">
+      <button class="a" id="tabLogin" onclick="switchTab('login')">Iniciar sesión</button>
+      <button id="tabRegister" onclick="switchTab('register')">Registrarse</button>
+    </div>
+    <label>Correo electrónico</label>
+    <input type="email" id="authEmail" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+    <label>Contraseña</label>
+    <input type="password" id="authPass" placeholder="Mínimo 6 caracteres" autocomplete="current-password">
+    <button class="btn-main" id="authBtn" onclick="doAuth()">Entrar</button>
+    <div class="err" id="authMsg"></div>
+  </div>
+</div>
+
+<div class="loading" id="loadingScreen" style="display:none">⏳ Cargando tus datos...</div>
+
+<div id="app" style="display:none">
+<div id="home" class="c">
+  <div class="tb">
+    <div class="bp">💰 <span id="bal">—</span> pts</div>
+    <div class="ib" onclick="openPP()">+</div>
+    <div class="ib acc" onclick="openBonus()">🎁<div class="dot" id="bonusDot" style="display:none"></div></div>
+    <div class="ib" onclick="openProfile()">👤</div>
+  </div>
+  <div class="st">Juegos</div>
+  <div class="gg">
+    <div class="gc" onclick="goGame('mines')"><div class="cb">HOT</div><div class="ce">🌀</div><div class="ct">Mines</div><div class="cs">Destapa y multiplica</div></div>
+    <div class="gc" onclick="goGame('boxes')"><div class="cb new">NEW</div><div class="ce">📦</div><div class="ct">Cajas</div><div class="cs">Elige y gana</div></div>
+  </div>
+  <div class="mywith" onclick="openMyWithdrawals()">
+    <div class="ico">💸</div>
+    <div><h3>Mis retiros</h3><p>Revisa el historial de tus pagos</p></div>
+    <div class="ar">›</div>
+  </div>
+  <div class="refer" onclick="openRef()">
+    <div class="ico">🎁</div>
+    <div><h3>Invita y gana</h3><p>Gana 50 puntos por cada amigo</p></div>
+    <div class="ar">›</div>
+  </div>
+  <div class="bonus" id="bonusCard" onclick="openBonus()">
+    <div class="ico">🎁</div>
+    <div><h3 id="bonusTitle">Bono diario</h3><p id="bonusDesc">Reclama 20 puntos gratis</p></div>
+    <div class="ar" id="bonusArrow">›</div>
+  </div>
+  <div class="prog">
+    <div class="top"><span class="t">Desbloqueo de $2</span><span class="v" id="progTxt">0 / 200</span></div>
+    <div class="bar"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="sub" id="progSub">Juega <b>200 partidas</b> para desbloquear el retiro de $2</div>
+  </div>
+</div>
+
+<div id="gameScreen" class="c" style="display:none">
+  <button class="bb" onclick="goHome()">← Menú</button>
+  <div class="inf">
+    <div>Apuesta mín<b>10 pts</b></div>
+    <div>Apuesta máx<b>200 pts</b></div>
+    <div>Ganancia máx<b>2000 pts</b></div>
+  </div>
+  <div class="gm" id="mines"><div class="gr" id="grid"></div><div class="mg" id="mMsg">Presiona apostar</div></div>
+  <div class="gm" id="boxes" style="display:none">
+    <div class="ba">
+      <div class="bx" onclick="openBox(0)">📦</div>
+      <div class="bx" onclick="openBox(1)">📦</div>
+      <div class="bx" onclick="openBox(2)">📦</div>
+    </div>
+    <div class="cr"><button class="pm" onclick="chgBalls(-1)">‹</button><div class="vl" id="ballsVal">1 Ball</div><button class="pm" onclick="chgBalls(1)">›</button></div>
+    <div class="mg" id="bMsg">Presiona apostar</div>
+  </div>
+  <div class="r2" id="minesPanels">
+    <div class="pn"><div class="tt">Portales malos</div><div class="sl"><button onclick="chgBad(-1)">‹</button><div class="nm" id="badNum"><b id="badV">1</b> <span>2</span></div><button onclick="chgBad(1)">›</button></div></div>
+    <div class="pn"><div class="tt">Tamaño</div><div class="sz"><div class="a" id="sz5" onclick="setSize(5,this)">5x5</div><div id="sz6" onclick="setSize(6,this)">6x6</div></div></div>
+  </div>
+  <div class="bbtns">
+    <button class="big bb2" id="betBtn" onclick="doBet()">Apostar</button>
+    <button class="big rb" onclick="randomPick()">Random</button>
+  </div>
+  <div class="cr"><div class="lb">Apuesta</div><div class="vl" id="betVal">10</div><div class="un">pts</div><button class="pm" onclick="chgBet(-1)">−</button><button class="pm" onclick="chgBet(1)">+</button></div>
+  <div class="hs"><div class="hr"><span>Hora</span><span>Apuesta</span><span>Coef</span><span>Ganancia</span><span>Pts</span></div><div id="histBody"></div></div>
+</div>
+</div>
+
+<div class="toast" id="toast"><span id="toastIcon">ℹ️</span><span id="toastMsg"></span></div>
+
+<div class="am" id="pfModal">
+  <div class="pf">
+    <button class="close-x" onclick="closeProfile()">✕</button>
+    <div class="avatar">😎</div>
+    <h2 id="pfName">—</h2>
+    <div class="role">Jugador</div>
+    <div class="stats">
+      <div class="stat-row"><span class="lbl">Saldo actual</span><span class="val acc" id="pfBal">— pts</span></div>
+      <div class="stat-row"><span class="lbl">Partidas jugadas</span><span class="val" id="pfGames">0 / 200</span></div>
+      <div class="stat-row"><span class="lbl">Bono diario</span><span class="val green" id="pfBonus">Disponible</span></div>
+    </div>
+    <div class="prog-mini">
+      <div class="top"><span class="t">Desbloqueo $2</span><span class="v" id="pfProgTxt">0%</span></div>
+      <div class="bar"><div class="f" id="pfProgFill" style="width:0%"></div></div>
+    </div>
+    <button class="btn-close" onclick="closeProfile()">Cerrar</button>
+    <button class="btn-logout" onclick="doLogout()">Cerrar sesión</button>
+  </div>
+</div>
+
+<!-- MODAL MIS RETIROS -->
+<div class="am" id="mwModal">
+  <div class="mw-box">
+    <button class="close-x" onclick="closeMyWithdrawals()">✕</button>
+    <h2>💸 Mis retiros</h2>
+    <div class="sub">Historial completo de tus solicitudes</div>
+    
+    <div class="mw-stats" id="mwStats">
+      <div class="mw-stat"><div class="lbl">Total</div><div class="val" id="mwTotal">0</div></div>
+      <div class="mw-stat"><div class="lbl">Pendiente</div><div class="val warn" id="mwPend">$0</div></div>
+      <div class="mw-stat"><div class="lbl">Pagado</div><div class="val ok" id="mwOk">$0</div></div>
+    </div>
+
+    <div class="mw-tabs">
+      <button class="a" id="mwAll" onclick="mwFilter('all')">Todos</button>
+      <button id="mwPendTab" onclick="mwFilter('pendiente')">🟡 Pendientes</button>
+      <button id="mwOkTab" onclick="mwFilter('pagado')">🟢 Pagados</button>
+    </div>
+
+    <div id="mwList"></div>
+  </div>
+</div>
+
+<div class="am" id="refModal">
+  <div class="bd">
+    <button class="close-x" onclick="closeRef()">✕</button>
+    <div class="ref-box">
+      <div class="ico">🎁</div>
+      <h2>Invita y gana</h2>
+      <p>Comparte este link con tus amigos<br>y gana <b style="color:#a5b4fc">50 puntos</b> por cada uno</p>
+      <div class="ref-link-box">
+        <div class="ref-link" id="refLink">—</div>
+      </div>
+      <div class="ref-btns">
+        <button class="ref-btn" onclick="copyRefLink()">📋 Copiar link</button>
+        <button class="ref-btn primary" onclick="shareWhatsApp()">📱 WhatsApp</button>
+      </div>
+    </div>
+    <div class="ref-info">
+      💡 Comparte tu link en redes sociales, grupos o con amigos. <b>Cada registro cuenta.</b>
+    </div>
+  </div>
+</div>
+
+<div class="am" id="ppModal">
+  <div class="pp">
+    <div class="logo"><span class="p1">Pay</span><span class="p2">Pal</span></div>
+    <h3>Retirar fondos</h3>
+    <div class="sub">Elige el monto a retirar</div>
+    <label class="lbl">Correo de PayPal</label>
+    <input type="email" id="ppEmail" placeholder="tucorreo@ejemplo.com">
+    <label class="lbl">Monto</label>
+    <div class="cards" id="ppCards"></div>
+    <div class="lock-info" id="ppLockInfo" style="display:none">🔒 El monto de <b>$2</b> se desbloquea con <b><span id="ppFaltan">200</span> partidas</b> más.</div>
+    <div class="disponible"><span class="l">Disponible:</span><span class="v"><span id="ppBal">—</span> pts</span></div>
+    <div class="msg" id="ppMsg"></div>
+    <div class="btns"><button class="b1" onclick="closePP()">Cancelar</button><button class="b2" id="ppBtn" onclick="doRetiro()">Retirar</button></div>
+  </div>
+</div>
+  <div class="am" id="bdModal">
+  <div class="bd">
+    <button class="close-x" onclick="closeBonus()">✕</button>
+    <div class="big-ico">🎁</div>
+    <h2>Bono diario</h2>
+    <p>Vuelve cada 24 horas</p>
+    <div class="amount">+20 pts</div>
+    <button class="btn-claim" id="bdBtn" onclick="claimBonus()">Reclamar</button>
+    <p id="bdMsg" style="margin-top:14px;font-size:.78em;min-height:18px"></p>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, updateDoc, getDoc, onSnapshot, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCnAR5aN2h_JJyqj6R98Up86-yESOyfecY",
+  authDomain: "ganar-bf463.firebaseapp.com",
+  projectId: "ganar-bf463",
+  storageBucket: "ganar-bf463.firebasestorage.app",
+  messagingSenderId: "607441866526",
+  appId: "1:607441866526:web:1e9d438ae3afdf4ba9430f",
+  measurementId: "G-WWTYMK5V8L"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUid = null, currentEmail = null, sessionStart = Date.now();
+let userLoaded = false;
+let bal = null, gamesPlayed = 0;
+let misRetiros = [];
+let mwCurrentFilter = 'all';
+let refLinkGlobal = 'https://tucasino.com';
+let bet=10,bad=1,size=5,gActive=false,gBet=0,gMult=1,gRev=0,gBombs=[],bActive=false,bBet=0,bBad=[],balls=1,selectedUsd=0;
+const GAMES_TO_UNLOCK=200,PTS_PER_USD=500,MONTOS=[2,5,10,15,20,30],BONUS_AMOUNT=20,BONUS_COOLDOWN=864e5;
+const $=id=>document.getElementById(id);
+const up=()=>{
+  if(bal===null) return;
+  $('bal').textContent = bal;
+  $('ppBal').textContent = bal;
+  updProgress();
+  updBonusBtn();
+};
+const msg=(id,t,c='')=>{const e=$(id);e.textContent=t;e.className='mg '+c};
+const fmtMoney = n => '$' + (n||0).toFixed(2);
+const fmtFecha = t => t ? new Date(t).toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+const fmtFechaHora = t => t ? new Date(t).toLocaleString('es-ES',{day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
+
+let authMode = 'login';
+window.switchTab = function(m){
+  authMode = m;
+  $('tabLogin').classList.toggle('a', m==='login');
+  $('tabRegister').classList.toggle('a', m==='register');
+  $('authBtn').textContent = m==='login' ? 'Entrar' : 'Crear cuenta';
+  $('authMsg').textContent = '';
+};
+window.doAuth = async function(){
+  const email = $('authEmail').value.trim();
+  const pass = $('authPass').value;
+  const btn = $('authBtn'), msgEl = $('authMsg');
+  if(!email || !email.includes('@')){msgEl.textContent='❌ Correo inválido';return}
+  if(!pass || pass.length < 6){msgEl.textContent='❌ Contraseña mínimo 6 caracteres';return}
+  btn.disabled = true;
+  btn.textContent = authMode==='login' ? 'Entrando...' : 'Creando...';
+  msgEl.textContent = '';
+  try{
+    if(authMode==='login'){
+      await signInWithEmailAndPassword(auth, email, pass);
+    } else {
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      await setDoc(doc(db, 'users', cred.user.uid), {
+        uid: cred.user.uid, email: email, balance: 200, gamesPlayed: 0,
+        createdAt: Date.now(), lastSeen: Date.now(), totalMinutes: 0,
+        retiros: [], notificaciones: []
+      });
+    }
+  }catch(e){
+    const errores = {
+      'auth/invalid-credential': '❌ Correo o contraseña incorrectos',
+      'auth/wrong-password': '❌ Contraseña incorrecta',
+      'auth/user-not-found': '❌ No existe esa cuenta',
+      'auth/email-already-in-use': '❌ Ese correo ya está registrado',
+      'auth/invalid-email': '❌ Correo inválido',
+      'auth/weak-password': '❌ Contraseña muy débil'
+    };
+    msgEl.textContent = errores[e.code] || '❌ Error: ' + e.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = authMode==='login' ? 'Entrar' : 'Crear cuenta';
+  }
+};
+window.doLogout = async function(){
+  if(confirm('¿Cerrar sesión?')){await signOut(auth);location.reload()}
+};
+
+onAuthStateChanged(auth, async (user) => {
+  if(user){
+    currentUid = user.uid;
+    currentEmail = user.email;
+    userLoaded = false;
+    $('loginScreen').style.display = 'none';
+    $('app').style.display = 'none';
+    $('loadingScreen').style.display = 'flex';
+    sessionStart = Date.now();
+    await initUserDoc(user.uid, user.email);
+    loadConfig();
+  } else {
+    $('loginScreen').style.display = 'flex';
+    $('app').style.display = 'none';
+    $('loadingScreen').style.display = 'none';
+    currentUid = null;
+    bal = null;
+    userLoaded = false;
+  }
+});
+
+async function loadConfig(){
+  try{
+    const ref = doc(db, 'config', 'general');
+    onSnapshot(ref, (snap) => {
+      if(snap.exists() && snap.data().refLink){
+        refLinkGlobal = snap.data().refLink;
+        if($('refModal').classList.contains('a')) openRef();
+      }
+    });
+  }catch(e){console.error(e)}
+}
+
+async function initUserDoc(uid, email){
+  const ref = doc(db, 'users', uid);
+  const snap = await getDoc(ref);
+  if(!snap.exists()){
+    await setDoc(ref, {
+      uid, email, balance: 200, gamesPlayed: 0,
+      createdAt: Date.now(), lastSeen: Date.now(), totalMinutes: 0,
+      retiros: [], notificaciones: []
+    });
+    bal = 200; gamesPlayed = 0; misRetiros = [];
+  } else {
+    const d = snap.data();
+    bal = d.balance !== undefined ? d.balance : 200;
+    gamesPlayed = d.gamesPlayed || 0;
+    misRetiros = d.retiros || [];
+  }
+  userLoaded = true;
+  $('pfName').textContent = email;
+  $('loadingScreen').style.display = 'none';
+  $('app').style.display = 'block';
+  up();
+  
+  onSnapshot(ref, (docSnap) => {
+    if(docSnap.exists() && userLoaded){
+      const d = docSnap.data();
+      if(!gActive && !bActive){
+        bal = d.balance !== undefined ? d.balance : bal;
+        gamesPlayed = d.gamesPlayed !== undefined ? d.gamesPlayed : gamesPlayed;
+        $('bal').textContent = bal;
+        updProgress();
+      }
+      misRetiros = d.retiros || [];
+      if($('mwModal').classList.contains('a')) renderMyWithdrawals();
+      
+      if(d.notificaciones && d.notificaciones.length){
+        const noLeidas = d.notificaciones.filter(n => !n.leida);
+        if(noLeidas.length && userLoaded){
+          noLeidas.forEach(n => {
+            const tipo = n.tipo === 'success' ? 'ok' : n.tipo === 'warning' ? 'warn' : 'info';
+            toast(n.msg, tipo);
+          });
+          const actualizadas = d.notificaciones.map(n =>
+            n.leida ? n : {...n, leida: true, fechaLeida: Date.now()}
+          );
+          updateDoc(ref, { notificaciones: actualizadas }).catch(e => console.error('Error marcando leídas:', e));
+        }
+      }
+    }
+  });
+}
+
+async function syncUser(){
+  if(!currentUid || !userLoaded) return;
+  try{
+    await updateDoc(doc(db, 'users', currentUid), {
+      balance: bal, gamesPlayed: gamesPlayed, lastSeen: Date.now()
+    });
+  }catch(e){console.error(e)}
+}
+
+setInterval(async () => {
+  if(!currentUid || !userLoaded) return;
+  const min = Math.floor((Date.now() - sessionStart) / 60000);
+  if(min > 0){
+    try{
+      const ref = doc(db, 'users', currentUid);
+      const snap = await getDoc(ref);
+      await updateDoc(ref, {
+        totalMinutes: (snap.data().totalMinutes || 0) + min,
+        lastSeen: Date.now()
+      });
+      sessionStart = Date.now();
+    }catch(e){console.error(e)}
+  }
+}, 60000);
+
+window.addEventListener('beforeunload', () => {
+  if(currentUid && userLoaded){
+    updateDoc(doc(db, 'users', currentUid), {
+      balance: bal, gamesPlayed: gamesPlayed, lastSeen: Date.now()
+    }).catch(()=>{});
+  }
+});
+
+let toastT = null;
+function toast(text, type='info'){
+  const t = $('toast'), i = $('toastIcon'), m = $('toastMsg');
+  t.className = 'toast';
+  if(type==='ok'){t.classList.add('ok');i.textContent='✓'}
+  else if(type==='warn'){t.classList.add('warn');i.textContent='⏳'}
+  else if(type==='err'){t.classList.add('err');i.textContent='✕'}
+  else{i.textContent='ℹ️'}
+  m.textContent = text;
+  clearTimeout(toastT);
+  requestAnimationFrame(() => t.classList.add('show'));
+  toastT = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ===== MIS RETIROS =====
+window.openMyWithdrawals = function(){
+  mwCurrentFilter = 'all';
+  ['mwAll','mwPendTab','mwOkTab'].forEach(id => $(id).classList.remove('a'));
+  $('mwAll').classList.add('a');
+  renderMyWithdrawals();
+  $('mwModal').classList.add('a');
+};
+window.closeMyWithdrawals = function(){$('mwModal').classList.remove('a')};
+
+window.mwFilter = function(f){
+  mwCurrentFilter = f;
+  ['mwAll','mwPendTab','mwOkTab'].forEach(id => $(id).classList.remove('a'));
+  if(f === 'all') $('mwAll').classList.add('a');
+  if(f === 'pendiente') $('mwPendTab').classList.add('a');
+  if(f === 'pagado') $('mwOkTab').classList.add('a');
+  renderMyWithdrawals();
+};
+
+function renderMyWithdrawals(){
+  const list = $('mwList');
+  const total = misRetiros.length;
+  const pendCount = misRetiros.filter(r => r.estado === 'pendiente').length;
+  const okCount = misRetiros.filter(r => r.estado === 'pagado').length;
+  const pendSum = misRetiros.filter(r => r.estado === 'pendiente').reduce((s,r) => s + (r.monto||0), 0);
+  const okSum = misRetiros.filter(r => r.estado === 'pagado').reduce((s,r) => s + (r.monto||0), 0);
+
+  $('mwTotal').textContent = total;
+  $('mwPend').textContent = fmtMoney(pendSum);
+  $('mwOk').textContent = fmtMoney(okSum);
+
+  let filtered = misRetiros.slice();
+  if(mwCurrentFilter !== 'all') filtered = filtered.filter(r => r.estado === mwCurrentFilter);
+  filtered.sort((a,b) => (b.fecha||0) - (a.fecha||0));
+
+  if(!filtered.length){
+    list.innerHTML = `<div class="mw-empty">
+      <span class="ico">💸</span>
+      ${total === 0 ? 'Aún no has hecho ningún retiro' : 'No hay retiros con ese filtro'}
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(r => {
+    const isPend = r.estado === 'pendiente';
+    const fechaTxt = isPend 
+      ? `📅 Solicitado: ${fmtFechaHora(r.fecha)}`
+      : `📅 Solicitado: ${fmtFechaHora(r.fecha)}<br>✅ Pagado: ${fmtFechaHora(r.fechaPagado || r.fecha)}`;
+    return `<div class="mw-item">
+      <div class="info">
+        <div class="monto">${fmtMoney(r.monto)} <span>(${(r.puntos||0).toLocaleString()} pts)</span></div>
+        <div class="meta">${fechaTxt}</div>
+        ${r.email ? `<div class="meta">📧 ${r.email}</div>` : ''}
+      </div>
+      <div class="estado ${isPend?'pendiente':'pagado'}">${isPend?'Pendiente':'Pagado'}</span></div>
+    </div>`;
+  }).join('');
+}
+
+// ===== REFERIDOS =====
+window.openRef = function(){
+  $('refLink').textContent = refLinkGlobal;
+  $('refModal').classList.add('a');
+};
+window.closeRef = function(){$('refModal').classList.remove('a')};
+
+window.copyRefLink = function(){
+  const link = refLinkGlobal;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(link).then(() => toast('📋 Link copiado','ok'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = link; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    toast('📋 Link copiado','ok');
+  }
+};
+
+window.shareWhatsApp = function(){
+  const msg = encodeURIComponent('🎰 ¡Mira este casino! Gana puntos jugando: ' + refLinkGlobal);
+  window.open('https://wa.me/?text=' + msg, '_blank');
+};
+
+// ===== BONO =====
+function lastBonusTime(){
+  const key = 'lastBonus_' + (currentUid || 'anon');
+  return parseInt(localStorage.getItem(key) || 0);
+}
+function canClaimBonus(){return Date.now()-lastBonusTime()>=BONUS_COOLDOWN}
+function timeLeftBonus(){const l=BONUS_COOLDOWN-(Date.now()-lastBonusTime());if(l<=0)return'';return ~~(l/36e5)+'h '+~~((l%36e5)/6e4)+'m'}
+function updBonusBtn(){
+  if(bal === null) return;
+  const can = canClaimBonus();
+  $('bonusDot').style.display = can ? 'block' : 'none';
+  $('bonusCard').classList.toggle('dis', !can);
+  $('bonusTitle').textContent = can ? 'Bono diario' : 'Bono reclamado';
+  $('bonusDesc').textContent = can ? 'Reclama 20 puntos gratis' : 'Vuelve en ' + timeLeftBonus();
+  $('bonusArrow').textContent = can ? '›' : '⏳';
+}
+window.openBonus = function(){
+  if(!canClaimBonus()){toast('Ya reclamaste tu bono · Vuelve en '+timeLeftBonus(),'warn');return}
+  $('bdMsg').textContent = ''; $('bdBtn').disabled = false; $('bdBtn').textContent = 'Reclamar';
+  $('bdModal').classList.add('a');
+};
+window.closeBonus = function(){$('bdModal').classList.remove('a')};
+window.claimBonus = function(){
+  if(!canClaimBonus() || bal === null) return;
+  bal += BONUS_AMOUNT;
+  localStorage.setItem('lastBonus_' + (currentUid||'anon'), Date.now());
+  up(); syncUser();
+  $('bdBtn').disabled = true; $('bdBtn').textContent = '✓ Reclamado';
+  $('bdMsg').textContent = '+' + BONUS_AMOUNT + ' puntos añadidos';
+  $('bdMsg').style.color = '#4ade80';
+  setTimeout(() => {
+    closeBonus();
+    msg('mMsg', '🎁 +' + BONUS_AMOUNT + ' pts de bono', 'w');
+    msg('bMsg', '🎁 +' + BONUS_AMOUNT + ' pts de bono', 'w');
+  }, 1400);
+};
+
+function updProgress(){
+  if(gamesPlayed === null) return;
+  const pct = Math.min(100, (gamesPlayed / GAMES_TO_UNLOCK) * 100);
+  $('progFill').style.width = pct + '%';
+  $('progTxt').textContent = gamesPlayed + ' / ' + GAMES_TO_UNLOCK;
+  $('progSub').innerHTML = gamesPlayed >= GAMES_TO_UNLOCK
+    ? '✅ <b>Retiro de $2 desbloqueado</b>'
+    : 'Juega <b>' + (GAMES_TO_UNLOCK - gamesPlayed) + ' partidas</b> para desbloquear el retiro de $2';
+}
+
+window.goGame = function(g){
+  if(bal === null) return;
+  $('home').style.display = 'none';
+  $('gameScreen').style.display = 'block';
+  ['mines','boxes'].forEach(x => $(x).style.display = x === g ? 'block' : 'none');
+  $('minesPanels').style.display = g === 'mines' ? 'grid' : 'none';
+};
+window.goHome = function(){$('home').style.display = 'block';$('gameScreen').style.display = 'none'};
+window.chgBet = function(d){bet = Math.max(10, Math.min(bal||10, bet+d*10)); $('betVal').textContent = bet};
+window.chgBad = function(d){bad = Math.max(1, Math.min(4, bad+d)); $('badV').textContent = bad; $('badNum').children[1].textContent = bad+1};
+window.setSize = function(s, el){size = s; document.querySelectorAll('.sz div').forEach(x => x.classList.remove('a')); el.classList.add('a'); buildGrid()};
+window.chgBalls = function(d){balls = Math.max(1, Math.min(2, balls+d)); $('ballsVal').textContent = balls + (balls===1?' Ball':' Balls')};
+
+function buildGrid(){
+  const g = $('grid');
+  g.style.gridTemplateColumns = `repeat(${size},1fr)`;
+  g.innerHTML = '';
+  for(let i=0; i<size*size; i++){
+    const c = document.createElement('div');
+    c.className = 'cl'; c.dataset.i = i;
+    c.onclick = () => revCell(i);
+    g.appendChild(c);
+  }
+}
+buildGrid();
+  function multAt(r){
+  if(r===0) return 1;
+  const mx = 4 + (bad-1)*2, mr = size*size - bad;
+  return 1 + (mx-1) * Math.pow(r/mr, 1.6);
+}
+
+window.doBet = function(){
+  if(bal === null) return;
+  if(gActive){cashout();return}
+  if(bActive) return;
+  if(bet<10 || bet>bal){msg('mMsg','Apuesta inválida','l');return}
+  bal -= bet; up(); syncUser();
+  gBet = bet; gActive = true; gRev = 0; gMult = 1; gBombs = [];
+  const t = size*size;
+  while(gBombs.length < bad){const p = ~~(Math.random()*t); if(!gBombs.includes(p)) gBombs.push(p)}
+  document.querySelectorAll('.cl').forEach(c => {c.className='cl'; c.textContent=''});
+  $('betBtn').textContent = 'Retirar (' + ~~(gBet*gMult) + ' pts)';
+  msg('mMsg', 'Destapa. ' + bad + ' portales. Máx: ' + (4+(bad-1)*2) + 'x');
+};
+
+function revCell(i){
+  if(!gActive) return;
+  const c = document.querySelector(`.cl[data-i="${i}"]`);
+  if(c.classList.contains('rv')) return;
+  if(gBombs.includes(i)){
+    c.classList.add('rv','pt'); c.textContent = '🌀';
+    gBombs.forEach(x => {
+      const y = document.querySelector(`.cl[data-i="${x}"]`);
+      if(!y.classList.contains('rv')){y.classList.add('rv','pt'); y.textContent='🌀'}
+    });
+    gActive = false; $('betBtn').textContent = 'Apostar';
+    gamesPlayed++; updProgress(); syncUser();
+    addHist('Mines', gBet, 0, 0);
+    msg('mMsg', '💥 Perdiste ' + gBet + ' pts', 'l');
+    return;
+  }
+  c.classList.add('rv','gm2'); gRev++;
+  gMult = multAt(gRev);
+  const w = ~~(gBet * gMult);
+  c.innerHTML = `💎<span class="vl">${gMult.toFixed(2)}x</span>`;
+  $('betBtn').textContent = 'Retirar (' + w + ' pts)';
+  msg('mMsg', `✅ ${gMult.toFixed(2)}x · ${w} pts`);
+  if(gRev === size*size - bad) cashout();
+}
+
+function cashout(){
+  if(!gActive) return;
+  const w = ~~(gBet * gMult);
+  bal += w; up(); syncUser();
+  gActive = false; $('betBtn').textContent = 'Apostar';
+  gamesPlayed++; updProgress(); syncUser();
+  msg('mMsg', '🎉 Retiraste ' + w + ' pts', 'w');
+  addHist('Mines', gBet, gMult, w);
+  gBombs.forEach(x => {
+    const y = document.querySelector(`.cl[data-i="${x}"]`);
+    if(!y.classList.contains('rv')){y.classList.add('rv','pt'); y.textContent='🌀'}
+  });
+}
+
+function startBoxes(){
+  if(bal === null) return;
+  if(bet<10 || bet>bal){msg('bMsg','Apuesta inválida','l');return}
+  bal -= bet; up(); syncUser();
+  bBet = bet; bActive = true; bBad = [];
+  const idx = [0,1,2];
+  for(let i=0; i<balls && i<3; i++){
+    const p = ~~(Math.random()*idx.length);
+    bBad.push(idx[p]); idx.splice(p,1);
+  }
+  const bxs = document.querySelectorAll('.bx');
+  bxs.forEach((b,i) => {b.className='bx'; b.textContent='📦'; b.onclick=()=>openBox(i)});
+  msg('bMsg', 'Elige una caja. ' + balls + ' tiene(n) trampa');
+}
+
+window.openBox = function(i){
+  if(!bActive) return;
+  const bxs = document.querySelectorAll('.bx'), b = bxs[i];
+  if(b.classList.contains('op')) return;
+  b.classList.add('op');
+  if(bBad.includes(i)){
+    b.classList.add('bd'); b.textContent = '👹';
+    bBad.forEach(x => {if(x!==i){bxs[x].classList.add('bd'); bxs[x].textContent='👹'}});
+    bActive = false;
+    addHist('Cajas', bBet, 0, 0);
+    msg('bMsg', '💥 Perdiste ' + bBet + ' pts', 'l');
+  } else {
+    b.textContent = '💰';
+    const m = 2, w = ~~(bBet*m);
+    bal += w; up(); syncUser(); bActive = false;
+    addHist('Cajas', bBet, m, w);
+    msg('bMsg', '🎉 Ganaste ' + w + ' pts', 'w');
+    bBad.forEach(x => {if(x!==i){bxs[x].classList.add('bd'); bxs[x].textContent='👹'}});
+  }
+  $('betBtn').textContent = 'Apostar';
+  gamesPlayed++; updProgress(); syncUser();
+};
+
+const origDoBet = window.doBet;
+window.doBet = function(){
+  if($('boxes').style.display !== 'none'){if(bActive) return; startBoxes(); return}
+  origDoBet();
+};
+
+window.randomPick = function(){
+  if(bal === null) return;
+  if(gActive){const cs=[...document.querySelectorAll('.cl:not(.rv)')]; if(cs.length) cs[~~(Math.random()*cs.length)].click(); return}
+  if(bActive){const bs=[...document.querySelectorAll('.bx:not(.op)')]; if(bs.length) bs[~~(Math.random()*bs.length)].click(); return}
+  bet = 10 + ~~(Math.random()*Math.min(190, bal-10));
+  $('betVal').textContent = bet; doBet();
+};
+
+function addHist(g, b, m, w){
+  const d = new Date(), t = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  const r = document.createElement('div'); r.className = 'hr';
+  r.innerHTML = `<b>${t}</b><b>${b}</b><b>${m.toFixed(2)}x</b><b style="color:${w>0?'#4ade80':'#f87171'}">${w}</b><b>pts</b>`;
+  $('histBody').prepend(r);
+  if($('histBody').children.length > 8) $('histBody').lastChild.remove();
+}
+
+window.openProfile = function(){
+  $('pfName').textContent = currentEmail || '—';
+  $('pfBal').textContent = (bal||0) + ' pts';
+  $('pfGames').textContent = gamesPlayed + ' / ' + GAMES_TO_UNLOCK;
+  const can = canClaimBonus();
+  $('pfBonus').textContent = can ? 'Disponible' : 'En ' + timeLeftBonus();
+  $('pfBonus').style.color = can ? '#4ade80' : '#8b90a5';
+  const pct = Math.min(100, (gamesPlayed / GAMES_TO_UNLOCK) * 100);
+  $('pfProgFill').style.width = pct + '%';
+  $('pfProgTxt').textContent = Math.round(pct) + '%';
+  $('pfModal').classList.add('a');
+};
+window.closeProfile = function(){$('pfModal').classList.remove('a')};
+
+function buildCards(){
+  const c = $('ppCards'); c.innerHTML = '';
+  const u = gamesPlayed >= GAMES_TO_UNLOCK;
+  MONTOS.forEach(usd => {
+    const pts = usd * PTS_PER_USD;
+    const hasFunds = (bal||0) >= pts;
+    const isLocked = (usd === 2 && !u);
+    const disabled = isLocked || !hasFunds;
+    const d = document.createElement('div');
+    d.className = 'card' + (disabled?' dis':'') + (isLocked?' locked':'');
+    d.dataset.usd = usd;
+    d.innerHTML = `${isLocked?'<div class="lockIcon">🔒</div>':''}<div class="usd">$${usd}</div><div class="pts">${pts.toLocaleString()} pts</div>${usd===30?'<div class="max">MAX</div>':''}`;
+    if(!disabled) d.onclick = () => selectCard(usd);
+    c.appendChild(d);
+  });
+}
+function selectCard(usd){
+  selectedUsd = usd;
+  document.querySelectorAll('.pp .card').forEach(x => x.classList.remove('sel'));
+  document.querySelector(`.pp .card[data-usd="${usd}"]`).classList.add('sel');
+  $('ppMsg').textContent = '';
+}
+window.openPP = function(){
+  $('ppEmail').value = currentEmail || '';
+  selectedUsd = 0;
+  $('ppMsg').textContent = ''; $('ppMsg').className = 'msg';
+  $('ppBal').textContent = bal;
+  buildCards();
+  if(gamesPlayed < GAMES_TO_UNLOCK){
+    $('ppLockInfo').style.display = 'block';
+    $('ppFaltan').textContent = GAMES_TO_UNLOCK - gamesPlayed;
+  } else {
+    $('ppLockInfo').style.display = 'none';
+  }
+  $('ppBtn').disabled = false; $('ppBtn').textContent = 'Retirar';
+  $('ppModal').classList.add('a');
+};
+window.closePP = function(){$('ppModal').classList.remove('a')};
+
+window.doRetiro = async function(){
+  const m = $('ppMsg');
+  const email = $('ppEmail').value.trim();
+  if(!email || !email.includes('@')){m.textContent='❌ Correo inválido'; m.className='msg err'; return}
+  if(!selectedUsd){m.textContent='❌ Selecciona un monto'; m.className='msg err'; return}
+  if(selectedUsd === 2 && gamesPlayed < GAMES_TO_UNLOCK){m.textContent='🔒 El retiro de $2 se desbloquea con 200 partidas'; m.className='msg err'; return}
+  const pts = selectedUsd * PTS_PER_USD;
+  if(pts > bal){m.textContent='❌ Saldo insuficiente'; m.className='msg err'; return}
+  bal -= pts; up();
+  if(currentUid && userLoaded){
+    try{
+      await updateDoc(doc(db, 'users', currentUid), {
+        balance: bal,
+        paypalEmail: email,
+        retiros: arrayUnion({
+          monto: selectedUsd, puntos: pts, email,
+          fecha: Date.now(), estado: 'pendiente'
+        })
+      });
+    }catch(e){console.error(e)}
+  }
+  m.textContent = '✅ $' + selectedUsd + ' solicitado a ' + email;
+  m.className = 'msg ok';
+  setTimeout(closePP, 2200);
+};
+
+updProgress(); updBonusBtn();
+</script>
+</body>
+</html>
