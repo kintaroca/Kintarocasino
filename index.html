@@ -17,6 +17,10 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .ib.acc{background:#7c5cff;border-color:#7c5cff;color:#fff}
 .ib .dot{position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#ef4444;border-radius:50%;border:2px solid #0a0b0f}
 .st{font-size:.75em;font-weight:700;color:#6b7089;margin:0 2px 14px;letter-spacing:1.2px;text-transform:uppercase}
+/* ANUNCIOS */
+.ad-box{background:#141620;border:1px solid #1f2230;border-radius:14px;margin:14px 0;padding:8px;display:flex;justify-content:center;align-items:center;min-height:60px;overflow:hidden}
+.ad-box.native{min-height:auto;padding:10px}
+.ad-label{font-size:.6em;color:#3a4055;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:4px}
 .gg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .gc{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1/1.05;background:#141620;border:1px solid #1f2230;transition:.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 .gc:hover{background:#1a1d2a;border-color:#2a2f42;transform:translateY(-3px)}
@@ -37,7 +41,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .refer h3{font-size:.92em;font-weight:700;color:#fff;margin-bottom:2px}
 .refer p{font-size:.75em;color:#6b7089}
 .refer .ar{margin-left:auto;color:#6b7089}
-/* botón "Mis retiros" */
 .mywith{background:#141620;border:1px solid #1f2230;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-top:14px;transition:.2s}
 .mywith:hover{background:#1a1d2a;border-color:#2a2f42}
 .mywith .ico{font-size:1.6em;width:44px;height:44px;background:#1f2230;border-radius:12px;display:flex;align-items:center;justify-content:center}
@@ -133,8 +136,7 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .pf .stat-row .val.green{color:#4ade80}
 .pf .prog-mini{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:14px 16px;margin-bottom:14px;position:relative;z-index:2}
 .pf .prog-mini .top{display:flex;justify-content:space-between;margin-bottom:8px}
-.pf .prog-mini .top .t{font-size:.72em;color:#6b7089;font-weight:600;text-transform:uppercase}
-.pf .prog-mini .top .v{font-size:.75em;color:#7c5cff;font-weight:700}
+.pf .prog-mini .top .t{font-size:.72em;color:#6b7089;font-weight:600;text-transform:uppercase}.pf .prog-mini .top .v{font-size:.75em;color:#7c5cff;font-weight:700}
 .pf .prog-mini .bar{height:5px;background:#1f2230;border-radius:5px;overflow:hidden}
 .pf .prog-mini .bar .f{height:100%;background:#7c5cff;border-radius:5px}
 .pf .btn-close{width:100%;background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;position:relative;z-index:2;font-family:inherit;margin-bottom:8px}
@@ -164,7 +166,8 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .pp .lock-info b{color:#fff}
 .pp .disponible{display:flex;justify-content:space-between;background:#0f1118;border:1px solid #232637;padding:12px 14px;border-radius:12px;margin-top:14px;font-size:.82em}
 .pp .disponible .l{color:#6b7089;font-weight:600}
-.pp .disponible .v{color:#7c5cff;font-weight:700}.pp .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.pp .disponible .v{color:#7c5cff;font-weight:700}
+.pp .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
 .pp .b1{background:#1f2230;border:none;color:#e8eaf0;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
 .pp .b2{background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
 .pp .b2:disabled{opacity:.35;cursor:not-allowed}
@@ -179,7 +182,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .bd .amount{font-size:2.2em;font-weight:800;color:#7c5cff;margin:16px 0}
 .bd .btn-claim{background:#7c5cff;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.95em;width:100%;font-family:inherit}
 .bd .btn-claim:disabled{opacity:.5}
-/* REFERIDOS */
 .ref-box{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:22px 18px;text-align:center;margin-bottom:14px}
 .ref-box .ico{font-size:2.8em;margin-bottom:10px}
 .ref-box h2{font-size:1.1em;font-weight:800;color:#fff;margin-bottom:6px}
@@ -193,7 +195,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .ref-btn.primary:hover{background:#6b4de6}
 .ref-info{background:#0f1118;border:1px solid #1f2230;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:.75em;color:#94a3b8;font-weight:500;line-height:1.5;text-align:center}
 .ref-info b{color:#a5b4fc;font-weight:700}
-/* HISTORIAL DE RETIROS */
 .mw-box{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:22px 20px;max-width:440px;width:100%;margin:auto;position:relative;max-height:90vh;overflow-y:auto}
 .mw-box .close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:#6b7089;font-size:1.3em;cursor:pointer;font-family:inherit;width:32px;height:32px;border-radius:8px}
 .mw-box .close-x:hover{background:#1f2230;color:#fff}
@@ -252,11 +253,47 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="ib acc" onclick="openBonus()">🎁<div class="dot" id="bonusDot" style="display:none"></div></div>
     <div class="ib" onclick="openProfile()">👤</div>
   </div>
+
+  <!-- ANUNCIO: BANNER 320x50 -->
+  <div class="ad-box">
+    <div style="text-align:center;width:100%">
+      <div class="ad-label">Publicidad</div>
+      <script>
+        atOptions = {
+          'key' : '4e1261898734c13c49b9e4316b03c2ba',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/4e1261898734c13c49b9e4316b03c2ba/invoke.js"></script>
+    </div>
+  </div>
+
   <div class="st">Juegos</div>
   <div class="gg">
     <div class="gc" onclick="goGame('mines')"><div class="cb">HOT</div><div class="ce">🌀</div><div class="ct">Mines</div><div class="cs">Destapa y multiplica</div></div>
     <div class="gc" onclick="goGame('boxes')"><div class="cb new">NEW</div><div class="ce">📦</div><div class="ct">Cajas</div><div class="cs">Elige y gana</div></div>
   </div>
+
+  <!-- ANUNCIO: BANNER 300x250 -->
+  <div class="ad-box">
+    <div style="text-align:center">
+      <div class="ad-label">Publicidad</div>
+      <script>
+        atOptions = {
+          'key' : '0361cdbbe1557e982c3522b7ce82838e',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/0361cdbbe1557e982c3522b7ce82838e/invoke.js"></script>
+    </div>
+  </div>
+
   <div class="mywith" onclick="openMyWithdrawals()">
     <div class="ico">💸</div>
     <div><h3>Mis retiros</h3><p>Revisa el historial de tus pagos</p></div>
@@ -276,6 +313,15 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="top"><span class="t">Desbloqueo de $2</span><span class="v" id="progTxt">0 / 200</span></div>
     <div class="bar"><div class="fill" id="progFill" style="width:0%"></div></div>
     <div class="sub" id="progSub">Juega <b>200 partidas</b> para desbloquear el retiro de $2</div>
+  </div>
+
+  <!-- ANUNCIO: NATIVE BANNER -->
+  <div class="ad-box native">
+    <div style="width:100%">
+      <div class="ad-label">Contenido recomendado</div>
+      <script async="async" data-cfasync="false" src="https://pl31544707.profitableratecpmnetwork.com/9f429a107593f75f0e9461a145d88f1b/invoke.js"></script>
+      <div id="container-9f429a107593f75f0e9461a145d88f1b"></div>
+    </div>
   </div>
 </div>
 
@@ -330,26 +376,21 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <button class="btn-logout" onclick="doLogout()">Cerrar sesión</button>
   </div>
 </div>
-
-<!-- MODAL MIS RETIROS -->
-<div class="am" id="mwModal">
+  <div class="am" id="mwModal">
   <div class="mw-box">
     <button class="close-x" onclick="closeMyWithdrawals()">✕</button>
     <h2>💸 Mis retiros</h2>
     <div class="sub">Historial completo de tus solicitudes</div>
-    
-    <div class="mw-stats" id="mwStats">
+    <div class="mw-stats">
       <div class="mw-stat"><div class="lbl">Total</div><div class="val" id="mwTotal">0</div></div>
       <div class="mw-stat"><div class="lbl">Pendiente</div><div class="val warn" id="mwPend">$0</div></div>
       <div class="mw-stat"><div class="lbl">Pagado</div><div class="val ok" id="mwOk">$0</div></div>
     </div>
-
     <div class="mw-tabs">
       <button class="a" id="mwAll" onclick="mwFilter('all')">Todos</button>
       <button id="mwPendTab" onclick="mwFilter('pendiente')">🟡 Pendientes</button>
       <button id="mwOkTab" onclick="mwFilter('pagado')">🟢 Pagados</button>
     </div>
-
     <div id="mwList"></div>
   </div>
 </div>
@@ -390,7 +431,8 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="btns"><button class="b1" onclick="closePP()">Cancelar</button><button class="b2" id="ppBtn" onclick="doRetiro()">Retirar</button></div>
   </div>
 </div>
-  <div class="am" id="bdModal">
+
+<div class="am" id="bdModal">
   <div class="bd">
     <button class="close-x" onclick="closeBonus()">✕</button>
     <div class="big-ico">🎁</div>
@@ -439,7 +481,6 @@ const up=()=>{
 };
 const msg=(id,t,c='')=>{const e=$(id);e.textContent=t;e.className='mg '+c};
 const fmtMoney = n => '$' + (n||0).toFixed(2);
-const fmtFecha = t => t ? new Date(t).toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'}) : '—';
 const fmtFechaHora = t => t ? new Date(t).toLocaleString('es-ES',{day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
 
 let authMode = 'login';
@@ -572,7 +613,6 @@ async function initUserDoc(uid, email){
     }
   });
 }
-
 async function syncUser(){
   if(!currentUid || !userLoaded) return;
   try{
@@ -620,7 +660,6 @@ function toast(text, type='info'){
   toastT = setTimeout(() => t.classList.remove('show'), 4000);
 }
 
-// ===== MIS RETIROS =====
 window.openMyWithdrawals = function(){
   mwCurrentFilter = 'all';
   ['mwAll','mwPendTab','mwOkTab'].forEach(id => $(id).classList.remove('a'));
@@ -674,12 +713,11 @@ function renderMyWithdrawals(){
         <div class="meta">${fechaTxt}</div>
         ${r.email ? `<div class="meta">📧 ${r.email}</div>` : ''}
       </div>
-      <div class="estado ${isPend?'pendiente':'pagado'}">${isPend?'Pendiente':'Pagado'}</span></div>
+      <div class="estado ${isPend?'pendiente':'pagado'}">${isPend?'Pendiente':'Pagado'}</div>
     </div>`;
   }).join('');
 }
 
-// ===== REFERIDOS =====
 window.openRef = function(){
   $('refLink').textContent = refLinkGlobal;
   $('refModal').classList.add('a');
@@ -703,7 +741,6 @@ window.shareWhatsApp = function(){
   window.open('https://wa.me/?text=' + msg, '_blank');
 };
 
-// ===== BONO =====
 function lastBonusTime(){
   const key = 'lastBonus_' + (currentUid || 'anon');
   return parseInt(localStorage.getItem(key) || 0);
@@ -762,8 +799,7 @@ window.chgBet = function(d){bet = Math.max(10, Math.min(bal||10, bet+d*10)); $('
 window.chgBad = function(d){bad = Math.max(1, Math.min(4, bad+d)); $('badV').textContent = bad; $('badNum').children[1].textContent = bad+1};
 window.setSize = function(s, el){size = s; document.querySelectorAll('.sz div').forEach(x => x.classList.remove('a')); el.classList.add('a'); buildGrid()};
 window.chgBalls = function(d){balls = Math.max(1, Math.min(2, balls+d)); $('ballsVal').textContent = balls + (balls===1?' Ball':' Balls')};
-
-function buildGrid(){
+  function buildGrid(){
   const g = $('grid');
   g.style.gridTemplateColumns = `repeat(${size},1fr)`;
   g.innerHTML = '';
@@ -775,7 +811,8 @@ function buildGrid(){
   }
 }
 buildGrid();
-  function multAt(r){
+
+function multAt(r){
   if(r===0) return 1;
   const mx = 4 + (bad-1)*2, mr = size*size - bad;
   return 1 + (mx-1) * Math.pow(r/mr, 1.6);
@@ -975,5 +1012,12 @@ window.doRetiro = async function(){
 
 updProgress(); updBonusBtn();
 </script>
+
+<!-- ANUNCIO: POPUNDER -->
+<script src="https://pl31544706.profitableratecpmnetwork.com/fb/05/66/fb0566c506816641f8a9e3fb23e80b3d.js"></script>
+
+<!-- ANUNCIO: SOCIAL BAR -->
+<script src="https://pl31544708.profitableratecpmnetwork.com/71/33/69/71336941662338dfffb784a2cbd4ebd4.js"></script>
+
 </body>
 </html>
