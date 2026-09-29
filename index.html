@@ -17,7 +17,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .ib.acc{background:#7c5cff;border-color:#7c5cff;color:#fff}
 .ib .dot{position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#ef4444;border-radius:50%;border:2px solid #0a0b0f}
 .st{font-size:.75em;font-weight:700;color:#6b7089;margin:0 2px 14px;letter-spacing:1.2px;text-transform:uppercase}
-/* ANUNCIOS */
 .ad-box{background:#141620;border:1px solid #1f2230;border-radius:14px;margin:14px 0;padding:8px;display:flex;justify-content:center;align-items:center;min-height:60px;overflow:hidden}
 .ad-box.native{min-height:auto;padding:10px}
 .ad-label{font-size:.6em;color:#3a4055;font-weight:700;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:4px}
@@ -114,8 +113,7 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .login-box .tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#0f1118;border-radius:12px;padding:4px;margin-bottom:20px}
 .login-box .tabs button{background:transparent;border:none;color:#6b7089;padding:10px;border-radius:9px;font-weight:700;cursor:pointer;font-size:.85em;transition:.2s;font-family:inherit}
 .login-box .tabs button.a{background:#7c5cff;color:#fff}
-.login-box label{display:block;color:#6b7089;font-size:.7em;font-weight:700;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px}
-.login-box input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #232637;background:#0f1118;color:#fff;font-size:.95em;outline:none;font-family:inherit;transition:.2s}
+.login-box label{display:block;color:#6b7089;font-size:.7em;font-weight:700;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px}.login-box input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #232637;background:#0f1118;color:#fff;font-size:.95em;outline:none;font-family:inherit;transition:.2s}
 .login-box input:focus{border-color:#7c5cff}
 .login-box .btn-main{width:100%;background:#7c5cff;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.95em;margin-top:20px;transition:.2s;font-family:inherit}
 .login-box .btn-main:hover{background:#6b4de6}
@@ -136,7 +134,8 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .pf .stat-row .val.green{color:#4ade80}
 .pf .prog-mini{background:#0f1118;border:1px solid #1f2230;border-radius:14px;padding:14px 16px;margin-bottom:14px;position:relative;z-index:2}
 .pf .prog-mini .top{display:flex;justify-content:space-between;margin-bottom:8px}
-.pf .prog-mini .top .t{font-size:.72em;color:#6b7089;font-weight:600;text-transform:uppercase}.pf .prog-mini .top .v{font-size:.75em;color:#7c5cff;font-weight:700}
+.pf .prog-mini .top .t{font-size:.72em;color:#6b7089;font-weight:600;text-transform:uppercase}
+.pf .prog-mini .top .v{font-size:.75em;color:#7c5cff;font-weight:700}
 .pf .prog-mini .bar{height:5px;background:#1f2230;border-radius:5px;overflow:hidden}
 .pf .prog-mini .bar .f{height:100%;background:#7c5cff;border-radius:5px}
 .pf .btn-close{width:100%;background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;position:relative;z-index:2;font-family:inherit;margin-bottom:8px}
@@ -171,8 +170,7 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .pp .b1{background:#1f2230;border:none;color:#e8eaf0;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
 .pp .b2{background:#7c5cff;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9em;font-family:inherit}
 .pp .b2:disabled{opacity:.35;cursor:not-allowed}
-.pp .msg{text-align:center;margin-top:12px;font-size:.82em;font-weight:600;min-height:18px}
-.pp .msg.ok{color:#4ade80}
+.pp .msg{text-align:center;margin-top:12px;font-size:.82em;font-weight:600;min-height:18px}.pp .msg.ok{color:#4ade80}
 .pp .msg.err{color:#f87171}
 .bd{background:#141620;border:1px solid #1f2230;border-radius:20px;padding:32px 24px;max-width:400px;width:100%;text-align:center;margin:auto;position:relative}
 .bd .close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:#6b7089;font-size:1.3em;cursor:pointer;font-family:inherit}
@@ -222,6 +220,12 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
 .mw-tabs button{background:transparent;border:none;color:#6b7089;padding:9px;border-radius:9px;font-weight:700;cursor:pointer;font-size:.78em;transition:.2s;font-family:inherit}
 .mw-tabs button.a{background:#7c5cff;color:#fff}
 .loading{position:fixed;inset:0;background:#0a0b0f;display:flex;align-items:center;justify-content:center;z-index:1400;color:#6b7089;font-size:.9em;font-weight:600}
+.ban-screen{position:fixed;inset:0;background:#0a0b0f;color:#e8eaf0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Inter',sans-serif;text-align:center;z-index:9999}
+.ban-screen .box{background:#141620;border:1px solid rgba(239,68,68,.3);border-radius:20px;padding:40px 30px;max-width:400px}
+.ban-screen .emoji{font-size:4em;margin-bottom:16px}
+.ban-screen h1{font-size:1.4em;color:#f87171;margin-bottom:10px}
+.ban-screen p{color:#6b7089;font-size:.9em;line-height:1.5}
+.ban-screen .small{color:#6b7089;font-size:.8em;margin-top:16px}
 </style>
 </head>
 <body>
@@ -242,7 +246,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="err" id="authMsg"></div>
   </div>
 </div>
-
 <div class="loading" id="loadingScreen" style="display:none">⏳ Cargando tus datos...</div>
 
 <div id="app" style="display:none">
@@ -254,7 +257,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="ib" onclick="openProfile()">👤</div>
   </div>
 
-  <!-- ANUNCIO: BANNER 320x50 -->
   <div class="ad-box">
     <div style="text-align:center;width:100%">
       <div class="ad-label">Publicidad</div>
@@ -277,7 +279,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="gc" onclick="goGame('boxes')"><div class="cb new">NEW</div><div class="ce">📦</div><div class="ct">Cajas</div><div class="cs">Elige y gana</div></div>
   </div>
 
-  <!-- ANUNCIO: BANNER 300x250 -->
   <div class="ad-box">
     <div style="text-align:center">
       <div class="ad-label">Publicidad</div>
@@ -315,7 +316,6 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="sub" id="progSub">Juega <b>200 partidas</b> para desbloquear el retiro de $2</div>
   </div>
 
-  <!-- ANUNCIO: NATIVE BANNER -->
   <div class="ad-box native">
     <div style="width:100%">
       <div class="ad-label">Contenido recomendado</div>
@@ -376,7 +376,8 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <button class="btn-logout" onclick="doLogout()">Cerrar sesión</button>
   </div>
 </div>
-  <div class="am" id="mwModal">
+
+<div class="am" id="mwModal">
   <div class="mw-box">
     <button class="close-x" onclick="closeMyWithdrawals()">✕</button>
     <h2>💸 Mis retiros</h2>
@@ -414,9 +415,8 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
       💡 Comparte tu link en redes sociales, grupos o con amigos. <b>Cada registro cuenta.</b>
     </div>
   </div>
-</div>
-
-<div class="am" id="ppModal">
+                                                </div>
+    <div class="am" id="ppModal">
   <div class="pp">
     <div class="logo"><span class="p1">Pay</span><span class="p2">Pal</span></div>
     <h3>Retirar fondos</h3>
@@ -438,7 +438,7 @@ body{background:#0a0b0f;color:#e8eaf0;min-height:100vh;padding:20px 16px;font-we
     <div class="big-ico">🎁</div>
     <h2>Bono diario</h2>
     <p>Vuelve cada 24 horas</p>
-    <div class="amount">+20 pts</div>
+    <div class="amount" id="bdAmount">+20 pts</div>
     <button class="btn-claim" id="bdBtn" onclick="claimBonus()">Reclamar</button>
     <p id="bdMsg" style="margin-top:14px;font-size:.78em;min-height:18px"></p>
   </div>
@@ -470,7 +470,14 @@ let misRetiros = [];
 let mwCurrentFilter = 'all';
 let refLinkGlobal = 'https://tucasino.com';
 let bet=10,bad=1,size=5,gActive=false,gBet=0,gMult=1,gRev=0,gBombs=[],bActive=false,bBet=0,bBad=[],balls=1,selectedUsd=0;
-const GAMES_TO_UNLOCK=200,PTS_PER_USD=500,MONTOS=[2,5,10,15,20,30],BONUS_AMOUNT=20,BONUS_COOLDOWN=864e5;
+let configJuegos = {
+  minesMax: 4,
+  cajasProb: 0.66,
+  cajasMult: 2,
+  bonoDiario: 20,
+  puntosIniciales: 200
+};
+const GAMES_TO_UNLOCK=200,PTS_PER_USD=500,MONTOS=[2,5,10,15,20,30],BONUS_COOLDOWN=864e5;
 const $=id=>document.getElementById(id);
 const up=()=>{
   if(bal===null) return;
@@ -491,6 +498,7 @@ window.switchTab = function(m){
   $('authBtn').textContent = m==='login' ? 'Entrar' : 'Crear cuenta';
   $('authMsg').textContent = '';
 };
+
 window.doAuth = async function(){
   const email = $('authEmail').value.trim();
   const pass = $('authPass').value;
@@ -506,9 +514,9 @@ window.doAuth = async function(){
     } else {
       const cred = await createUserWithEmailAndPassword(auth, email, pass);
       await setDoc(doc(db, 'users', cred.user.uid), {
-        uid: cred.user.uid, email: email, balance: 200, gamesPlayed: 0,
+        uid: cred.user.uid, email: email, balance: configJuegos.puntosIniciales, gamesPlayed: 0,
         createdAt: Date.now(), lastSeen: Date.now(), totalMinutes: 0,
-        retiros: [], notificaciones: []
+        retiros: [], notificaciones: [], baneado: false
       });
     }
   }catch(e){
@@ -526,6 +534,7 @@ window.doAuth = async function(){
     btn.textContent = authMode==='login' ? 'Entrar' : 'Crear cuenta';
   }
 };
+
 window.doLogout = async function(){
   if(confirm('¿Cerrar sesión?')){await signOut(auth);location.reload()}
 };
@@ -541,6 +550,7 @@ onAuthStateChanged(auth, async (user) => {
     sessionStart = Date.now();
     await initUserDoc(user.uid, user.email);
     loadConfig();
+    loadGameConfig();
   } else {
     $('loginScreen').style.display = 'flex';
     $('app').style.display = 'none';
@@ -563,18 +573,45 @@ async function loadConfig(){
   }catch(e){console.error(e)}
 }
 
+async function loadGameConfig(){
+  try{
+    const ref = doc(db, 'config', 'juegos');
+    onSnapshot(ref, (snap) => {
+      if(snap.exists()){
+        configJuegos = { ...configJuegos, ...snap.data() };
+        updBonusBtn();
+        if($('bdAmount')) $('bdAmount').textContent = '+' + configJuegos.bonoDiario + ' pts';
+      }
+    });
+  }catch(e){console.error(e)}
+}
+
 async function initUserDoc(uid, email){
   const ref = doc(db, 'users', uid);
   const snap = await getDoc(ref);
   if(!snap.exists()){
     await setDoc(ref, {
-      uid, email, balance: 200, gamesPlayed: 0,
+      uid, email, balance: configJuegos.puntosIniciales, gamesPlayed: 0,
       createdAt: Date.now(), lastSeen: Date.now(), totalMinutes: 0,
-      retiros: [], notificaciones: []
+      retiros: [], notificaciones: [], baneado: false
     });
-    bal = 200; gamesPlayed = 0; misRetiros = [];
+    bal = configJuegos.puntosIniciales; gamesPlayed = 0; misRetiros = [];
   } else {
     const d = snap.data();
+    // ✅ VERIFICAR BANEO
+    if(d.baneado === true){
+      await signOut(auth);
+      document.body.innerHTML = `
+        <div class="ban-screen">
+          <div class="box">
+            <div class="emoji">🚫</div>
+            <h1>Cuenta suspendida</h1>
+            <p>${d.motivoBan || 'Tu cuenta ha sido suspendida temporalmente.'}</p>
+            <p class="small">Contacta al soporte si crees que es un error.</p>
+          </div>
+        </div>`;
+      return;
+    }
     bal = d.balance !== undefined ? d.balance : 200;
     gamesPlayed = d.gamesPlayed || 0;
     misRetiros = d.retiros || [];
@@ -588,6 +625,18 @@ async function initUserDoc(uid, email){
   onSnapshot(ref, (docSnap) => {
     if(docSnap.exists() && userLoaded){
       const d = docSnap.data();
+      if(d.baneado === true){
+        document.body.innerHTML = `
+          <div class="ban-screen">
+            <div class="box">
+              <div class="emoji">🚫</div>
+              <h1>Cuenta suspendida</h1>
+              <p>${d.motivoBan || 'Tu cuenta ha sido suspendida temporalmente.'}</p>
+            </div>
+          </div>`;
+        signOut(auth);
+        return;
+      }
       if(!gActive && !bActive){
         bal = d.balance !== undefined ? d.balance : bal;
         gamesPlayed = d.gamesPlayed !== undefined ? d.gamesPlayed : gamesPlayed;
@@ -607,13 +656,13 @@ async function initUserDoc(uid, email){
           const actualizadas = d.notificaciones.map(n =>
             n.leida ? n : {...n, leida: true, fechaLeida: Date.now()}
           );
-          updateDoc(ref, { notificaciones: actualizadas }).catch(e => console.error('Error marcando leídas:', e));
+          updateDoc(ref, { notificaciones: actualizadas }).catch(e => console.error(e));
         }
       }
     }
   });
 }
-async function syncUser(){
+  async function syncUser(){
   if(!currentUid || !userLoaded) return;
   try{
     await updateDoc(doc(db, 'users', currentUid), {
@@ -681,11 +730,8 @@ window.mwFilter = function(f){
 function renderMyWithdrawals(){
   const list = $('mwList');
   const total = misRetiros.length;
-  const pendCount = misRetiros.filter(r => r.estado === 'pendiente').length;
-  const okCount = misRetiros.filter(r => r.estado === 'pagado').length;
   const pendSum = misRetiros.filter(r => r.estado === 'pendiente').reduce((s,r) => s + (r.monto||0), 0);
   const okSum = misRetiros.filter(r => r.estado === 'pagado').reduce((s,r) => s + (r.monto||0), 0);
-
   $('mwTotal').textContent = total;
   $('mwPend').textContent = fmtMoney(pendSum);
   $('mwOk').textContent = fmtMoney(okSum);
@@ -701,7 +747,6 @@ function renderMyWithdrawals(){
     </div>`;
     return;
   }
-
   list.innerHTML = filtered.map(r => {
     const isPend = r.estado === 'pendiente';
     const fechaTxt = isPend 
@@ -753,8 +798,9 @@ function updBonusBtn(){
   $('bonusDot').style.display = can ? 'block' : 'none';
   $('bonusCard').classList.toggle('dis', !can);
   $('bonusTitle').textContent = can ? 'Bono diario' : 'Bono reclamado';
-  $('bonusDesc').textContent = can ? 'Reclama 20 puntos gratis' : 'Vuelve en ' + timeLeftBonus();
+  $('bonusDesc').textContent = can ? 'Reclama ' + configJuegos.bonoDiario + ' puntos gratis' : 'Vuelve en ' + timeLeftBonus();
   $('bonusArrow').textContent = can ? '›' : '⏳';
+  if($('bdAmount')) $('bdAmount').textContent = '+' + configJuegos.bonoDiario + ' pts';
 }
 window.openBonus = function(){
   if(!canClaimBonus()){toast('Ya reclamaste tu bono · Vuelve en '+timeLeftBonus(),'warn');return}
@@ -764,16 +810,16 @@ window.openBonus = function(){
 window.closeBonus = function(){$('bdModal').classList.remove('a')};
 window.claimBonus = function(){
   if(!canClaimBonus() || bal === null) return;
-  bal += BONUS_AMOUNT;
+  bal += configJuegos.bonoDiario;
   localStorage.setItem('lastBonus_' + (currentUid||'anon'), Date.now());
   up(); syncUser();
   $('bdBtn').disabled = true; $('bdBtn').textContent = '✓ Reclamado';
-  $('bdMsg').textContent = '+' + BONUS_AMOUNT + ' puntos añadidos';
+  $('bdMsg').textContent = '+' + configJuegos.bonoDiario + ' puntos añadidos';
   $('bdMsg').style.color = '#4ade80';
   setTimeout(() => {
     closeBonus();
-    msg('mMsg', '🎁 +' + BONUS_AMOUNT + ' pts de bono', 'w');
-    msg('bMsg', '🎁 +' + BONUS_AMOUNT + ' pts de bono', 'w');
+    msg('mMsg', '🎁 +' + configJuegos.bonoDiario + ' pts de bono', 'w');
+    msg('bMsg', '🎁 +' + configJuegos.bonoDiario + ' pts de bono', 'w');
   }, 1400);
 };
 
@@ -785,9 +831,8 @@ function updProgress(){
   $('progSub').innerHTML = gamesPlayed >= GAMES_TO_UNLOCK
     ? '✅ <b>Retiro de $2 desbloqueado</b>'
     : 'Juega <b>' + (GAMES_TO_UNLOCK - gamesPlayed) + ' partidas</b> para desbloquear el retiro de $2';
-}
-
-window.goGame = function(g){
+  }
+  window.goGame = function(g){
   if(bal === null) return;
   $('home').style.display = 'none';
   $('gameScreen').style.display = 'block';
@@ -799,7 +844,8 @@ window.chgBet = function(d){bet = Math.max(10, Math.min(bal||10, bet+d*10)); $('
 window.chgBad = function(d){bad = Math.max(1, Math.min(4, bad+d)); $('badV').textContent = bad; $('badNum').children[1].textContent = bad+1};
 window.setSize = function(s, el){size = s; document.querySelectorAll('.sz div').forEach(x => x.classList.remove('a')); el.classList.add('a'); buildGrid()};
 window.chgBalls = function(d){balls = Math.max(1, Math.min(2, balls+d)); $('ballsVal').textContent = balls + (balls===1?' Ball':' Balls')};
-  function buildGrid(){
+
+function buildGrid(){
   const g = $('grid');
   g.style.gridTemplateColumns = `repeat(${size},1fr)`;
   g.innerHTML = '';
@@ -812,9 +858,10 @@ window.chgBalls = function(d){balls = Math.max(1, Math.min(2, balls+d)); $('ball
 }
 buildGrid();
 
+// ✅ USAR minesMax DINÁMICO
 function multAt(r){
   if(r===0) return 1;
-  const mx = 4 + (bad-1)*2, mr = size*size - bad;
+  const mx = configJuegos.minesMax + (bad-1)*2, mr = size*size - bad;
   return 1 + (mx-1) * Math.pow(r/mr, 1.6);
 }
 
@@ -829,7 +876,7 @@ window.doBet = function(){
   while(gBombs.length < bad){const p = ~~(Math.random()*t); if(!gBombs.includes(p)) gBombs.push(p)}
   document.querySelectorAll('.cl').forEach(c => {c.className='cl'; c.textContent=''});
   $('betBtn').textContent = 'Retirar (' + ~~(gBet*gMult) + ' pts)';
-  msg('mMsg', 'Destapa. ' + bad + ' portales. Máx: ' + (4+(bad-1)*2) + 'x');
+  msg('mMsg', 'Destapa. ' + bad + ' portales. Máx: ' + (configJuegos.minesMax+(bad-1)*2) + 'x');
 };
 
 function revCell(i){
@@ -871,15 +918,19 @@ function cashout(){
   });
 }
 
+// ✅ USAR cajasProb y cajasMult DINÁMICOS
 function startBoxes(){
   if(bal === null) return;
   if(bet<10 || bet>bal){msg('bMsg','Apuesta inválida','l');return}
   bal -= bet; up(); syncUser();
   bBet = bet; bActive = true; bBad = [];
   const idx = [0,1,2];
+  const bombProb = 1 - configJuegos.cajasProb;
   for(let i=0; i<balls && i<3; i++){
-    const p = ~~(Math.random()*idx.length);
-    bBad.push(idx[p]); idx.splice(p,1);
+    if(Math.random() < bombProb || bombProb >= 1){
+      const p = ~~(Math.random()*idx.length);
+      bBad.push(idx[p]); idx.splice(p,1);
+    }
   }
   const bxs = document.querySelectorAll('.bx');
   bxs.forEach((b,i) => {b.className='bx'; b.textContent='📦'; b.onclick=()=>openBox(i)});
@@ -899,7 +950,7 @@ window.openBox = function(i){
     msg('bMsg', '💥 Perdiste ' + bBet + ' pts', 'l');
   } else {
     b.textContent = '💰';
-    const m = 2, w = ~~(bBet*m);
+    const m = configJuegos.cajasMult, w = ~~(bBet*m);
     bal += w; up(); syncUser(); bActive = false;
     addHist('Cajas', bBet, m, w);
     msg('bMsg', '🎉 Ganaste ' + w + ' pts', 'w');
@@ -929,9 +980,8 @@ function addHist(g, b, m, w){
   r.innerHTML = `<b>${t}</b><b>${b}</b><b>${m.toFixed(2)}x</b><b style="color:${w>0?'#4ade80':'#f87171'}">${w}</b><b>pts</b>`;
   $('histBody').prepend(r);
   if($('histBody').children.length > 8) $('histBody').lastChild.remove();
-}
-
-window.openProfile = function(){
+  }
+  window.openProfile = function(){
   $('pfName').textContent = currentEmail || '—';
   $('pfBal').textContent = (bal||0) + ' pts';
   $('pfGames').textContent = gamesPlayed + ' / ' + GAMES_TO_UNLOCK;
@@ -1013,10 +1063,7 @@ window.doRetiro = async function(){
 updProgress(); updBonusBtn();
 </script>
 
-<!-- ANUNCIO: POPUNDER -->
 <script src="https://pl31544706.profitableratecpmnetwork.com/fb/05/66/fb0566c506816641f8a9e3fb23e80b3d.js"></script>
-
-<!-- ANUNCIO: SOCIAL BAR -->
 <script src="https://pl31544708.profitableratecpmnetwork.com/71/33/69/71336941662338dfffb784a2cbd4ebd4.js"></script>
 
 </body>
